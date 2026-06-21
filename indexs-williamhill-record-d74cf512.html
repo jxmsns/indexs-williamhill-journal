@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威廉希尔 · 简明访问指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            background: #f2f4f7;
+            color: #1e293b;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 深色头图 — 柔和深蓝，带一点纹理氛围 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2b 0%, #1a2f44 100%);
+            color: #edf2f7;
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 28px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(1px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 580px;
+            margin: 0.4rem auto 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 0.8rem;
+            display: inline-block;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2.8rem 2rem 4rem;
+            flex: 1;
+        }
+
+        .intro-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 28px -6px rgba(0,0,0,0.08);
+            padding: 2.8rem 2.8rem 3rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .intro-card p {
+            margin-bottom: 1.3rem;
+            font-size: 1.06rem;
+        }
+
+        .intro-card p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* 承接段落中的链接强调色 */
+        a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.15s;
+        }
+
+        a:hover {
+            color: #0f3b9e;
+            border-bottom-color: #1d4ed8;
+        }
+
+        /* 特点列表 —— 卡片式，带小图标 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            margin: 2.4rem 0 2.2rem;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #f8fafc;
+            padding: 1.35rem 1.2rem;
+            border-radius: 20px;
+            border-left: 4px solid #1d4ed8;
+            transition: background 0.15s;
+        }
+
+        .feature-item:hover {
+            background: #eef2f8;
+        }
+
+        .feature-item .emoji-badge {
+            display: inline-block;
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+            line-height: 1;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 0;
+            line-height: 1.55;
+        }
+
+        /* 场景提醒轻卡片 */
+        .reminder-box {
+            background: #f1f5fe;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0 1.8rem;
+            border: 1px solid #dce7f5;
+        }
+
+        .reminder-box h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .reminder-box ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .reminder-box li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1.02rem;
+        }
+
+        .reminder-box li::before {
+            content: "·";
+            position: absolute;
+            left: 0.3rem;
+            color: #1d4ed8;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .faq-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 1.6rem;
+            padding: 1rem 0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.4rem 0.6rem;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .faq-item .a {
+            color: #475569;
+        }
+
+        /* 温和结尾 */
+        .closing-note {
+            margin-top: 2.8rem;
+            font-style: normal;
+            background: #f9fafc;
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #e8edf3;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .closing-note small {
+            display: block;
+            margin-top: 0.8rem;
+            color: #5f6b7a;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3rem 1.2rem 2.8rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .sub {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            .intro-card {
+                padding: 2rem 1.2rem;
+                border-radius: 20px;
+            }
+
+            .feature-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .feature-item {
+                flex: 1 1 auto;
+            }
+
+            .reminder-box {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .closing-note {
+                padding: 1.2rem 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .feature-item {
+                flex: 1 1 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>威廉希尔 · 简明指南</h1>
+        <div class="sub">一点点熟悉，让体验更从容</div>
+    </section>
+
+    <main class="container">
+        <div class="intro-card">
+
+            <!-- 开场短句 -->
+            <p>
+                每个人在接触一个新平台时，总希望先了解它的轮廓和边界。
+                这次关于 <a href="https://indexs-williamhill.com">威廉希尔</a> 的整理，不是为了罗列功能，而是想从日常使用的角度，聊一聊它是什么样子、有哪些值得留意的地方。
+            </p>
+
+            <!-- 承接段落 -->
+            <p>
+                如果你之前对威廉希尔只有模糊的印象，那么下面的内容或许能帮你更快找到感觉。它并不复杂，但多一些了解，总能让后续的操作更顺手。无论是第一次打开页面，还是偶尔需要查询信息，一份平实的说明总是有用的。
+            </p>
+
+            <!-- 特点列表 (卡片) -->
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="emoji-badge">🧭</span>
+                    <h3>结构清晰</h3>
+                    <p>导航与内容分区都比较直观，常见的入口和信息层级一目了然，减少不必要的寻找成本。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="emoji-badge">📱</span>
+                    <h3>响应适配</h3>
+                    <p>无论在电脑还是手机上访问，页面布局会自动调整，阅读和操作体验都比较一致。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="emoji-badge">🔐</span>
+                    <h3>访问提醒</h3>
+                    <p>首次使用建议确认网络环境稳定，并留意浏览器地址栏的域名信息，以免进入相似页面。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="emoji-badge">🧩</span>
+                    <h3>信息完备</h3>
+                    <p>常见的问题说明、帮助条目以及联系渠道都有比较完整的展示，适合自助查阅。</p>
+                </div>
+            </div>
+
+            <!-- 场景与提示 -->
+            <div class="reminder-box">
+                <h2>一些使用时的细节</h2>
+                <ul>
+                    <li>第一次打开页面时，建议先花一两分钟浏览整体结构，熟悉各个区域的位置。</li>
+                    <li>如果遇到加载稍慢的情况，可以尝试刷新或检查本地网络，有时只是临时波动。</li>
+                    <li>留意网站底部或帮助区域的说明，那里常常包含重要的使用条款和联系方式。</li>
+                    <li>对于任何需要输入个人信息的操作，建议保持基本的谨慎，核对页面链接是否与预期一致。</li>
+                </ul>
+            </div>
+
+            <!-- FAQ 摘要，不喧宾夺主，只是片段 -->
+            <div class="faq-summary">
+                <div class="faq-item">
+                    <span class="q">问：是否需要注册才能浏览？</span>
+                    <span class="a">大部分内容可以直接访问，部分个性化功能可能需要账号。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">问：语言支持如何？</span>
+                    <span class="a">页面默认中文，清晰易读，很少有生僻术语。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">问：如何确认自己访问的是正确站点？</span>
+                    <span class="a">直接使用上方链接进入 <a href="https://indexs-williamhill.com">威廉希尔</a>，并核对地址栏信息。</span>
+                </div>
+            </div>
+
+            <!-- 温和结尾 -->
+            <div class="closing-note">
+                希望这份简单的介绍，能让你对威廉希尔的页面多一分熟悉。<br>
+                有时候，少一些陌生感，使用起来就会更自然。
+                <small>— 保持轻松，理性浏览 —</small>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
